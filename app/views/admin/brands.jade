@@ -1,0 +1,34 @@
+extends layout
+
+block content
+
+    .panel.panel-default
+        .panel-heading
+            a.btn.btn-primary(href="/admin/brands/create") Create Brand
+        .panel-body
+            table.table.table-hover
+                thead
+                    tr
+                        th Name
+                        th Title line
+                        th Room
+                        th Floor
+                        th Category
+                        th Logo
+                        th Delete
+                tbody
+                    if brands
+                        each brand in brands
+                            tr
+                                td: a(href="/admin/brand/#{brand.id}") #{_o(brand.name)}
+                                td #{_o(brand.titleLine)}
+                                td #{brand.room}
+                                td #{brand.floor}
+                                td #{brand.category}
+                                td
+                                    if(brand.logo)
+                                        img(src="/uploads/#{brand.logo}", width="100")
+                                td
+                                    a.edit(href="/admin/brand/#{brand.id}") Edit
+                                    br
+                                    a.delete(href="/admin/brand/delete?id=#{brand.id}") Delete

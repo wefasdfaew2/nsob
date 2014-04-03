@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    - var colors = ['#8E5793', '#FAC075', '#C7017F', '#EC6090', '#960E6D', '#E6007E', '#EA5153', '#C45580', '#E4609F', '#CF1152', '#F08159', '#A877B2'];
+    - var greys = ['#E3E5F1', '#ECEBF1', '#E8E9F0', '#E8EBF6', '#EDEFF8', '#E6E7EE', '#EDEDF1', '#E3E6F4', '#EAEBF0', '#F0F0F1', '#E6E8F5', '#F1F1F7', '#E3E6F4', '#E8EAF6', '#E7E8ED', '#E8E9EC', '#EDEFF7', '#E1E4F1'];
+    #entertain-page.clearfix
+        img(src="#{asset_path('coming-soon.png')}", width="100%")
+        while brands.length > 0
+            - var cc = colors.slice(0, colors.length - 1);
+            - var gc = greys.slice(0, greys.length - 1);
+            - var brands9 = brands.splice(0, 9);
+            .shop-box.szg
+                each brand in brands9
+                    - var rc = Math.floor(Math.random()*cc.length);
+                    a.shop-brand(href="/brand/#{brand.id}/#{S(_o(brand.name, 'en')).slugify().s}", data-brand-category="#{brand.category}", style="background-color:#{cc.splice(rc, 1)};")
+                        span #{_o(brand.name)}
+                        if brand.logo
+                            img(data-image-src="/uploads/#{brand.logo}", width="120", height="120")
+                - for (var i = 0; i < 9 - brands9.length; ++i)
+                    - var rgc = Math.floor(Math.random()*gc.length);
+                    .shop-brand-placeholder(style="background-color:#{gc.splice(rgc, 1)};")

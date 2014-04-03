@@ -1,0 +1,45 @@
+extends layout
+
+block content
+    #index-page.clearfix
+        each box in boxes
+            - if (box.type == 'brand') box.link = '/brand/' + box.id + '/' + S(_o(box.name, 'en')).slugify().s
+            if box.link
+                a.index-box.szg(href="#{box.link.match(/^(\/|http:\/\/)/i) ? '' : 'http://'}#{box.link}", target="#{box.link.match(/^http/i) ? '_blank' : '_self'}")
+                    +bx(box)
+            else
+                .index-box.szg
+                    +bx(box)
+
+mixin bx(box)
+    - var img = box.image;
+    if img
+        img(src="#{ img.match(/^http/i) ? '' : '/uploads/' }#{img}")
+    .box-label(class="box-label-color-#{Math.floor(Math.random()*12)}")
+
+        if _o(box.title || box.name).length > 0 && _o(box.subTitle || box.titleLine).length > 0 && box.date != 0
+            h2.box-title(style="#{ _o(box.subTitle).length == 0 && _o(box.titleLine).length == 0 && box.date == 0 ? 'margin-top:26px;' : '' }") #{_o(box.title || box.name)}
+            h3.box-subtitle #{_o(box.subTitle || box.titleLine)}
+            span.box-date #{moment(box.date).format('MM/ D/ YYYY')}
+
+        if _o(box.title || box.name).length > 0 &&_o(box.subTitle || box.titleLine).length > 0 && box.date == 0
+            h2.box-title-without-date(style="#{ _o(box.subTitle).length == 0 && _o(box.titleLine).length == 0 && box.date == 0 ? 'margin-top:26px;' : '' }") #{_o(box.title || box.name)}
+            h3.box-subtitle #{_o(box.subTitle || box.titleLine)}
+
+        if _o(box.title || box.name).length > 0 && _o(box.subTitle || box.titleLine).length == 0 && box.date != 0
+            h2.box-title-without-date(style="#{ _o(box.subTitle).length == 0 && _o(box.titleLine).length == 0 && box.date == 0 ? 'margin-top:26px;' : '' }") #{_o(box.title || box.name)}
+            h3
+            span.box-date-without-subtitle #{moment(box.date).format('MM/ D/ YYYY')}
+
+        if _o(box.title || box.name).length > 0 && _o(box.subTitle || box.titleLine).length == 0 && box.date == 0
+            h2.box-title-without-date-2 #{_o(box.title || box.name)}
+
+        if _o(box.title || box.name).length == 0 && _o(box.subTitle || box.titleLine).length > 0 && box.date == 0
+            h2
+            h3.box-subtitle-alone #{_o(box.subTitle || box.titleLine)}
+            span
+
+        if _o(box.title || box.name).length == 0 && _o(box.subTitle || box.titleLine).length == 0 && box.date != 0
+            h2
+            h3
+            span.box-date-alone #{moment(box.date).format('MM/ D/ YYYY')}

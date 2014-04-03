@@ -1,0 +1,97 @@
+extends layout
+
+block content
+    .panel.panel-default
+        .panel-heading
+            a.btn.btn-primary(href="/admin/brands") Brands List
+        form(action="/admin/brand/#{brand.id}", enctype="multipart/form-data", method="post")
+            .panel-body
+                if errors
+                    each error in errors
+                        .alert.alert-warning.alert-dismissable
+                            button.close(type="button", data-dismiss="alert", aria-hidden="true") &times;
+                            | #{error}
+                .col-md-8.col-md-offset-2
+                    ul.nav.nav-pills
+                        each locale, i in locales()
+                            li(class=i==0?"active":""): a(href="#lang_#{locale.locale}", data-toggle="pill") #{locale.locale}
+
+                    div.tab-content
+                        each locale, i in locales()
+                            div.tab-pane(class=i==0?"active":"", id="lang_#{locale.locale}")
+                                .row
+                                    .form-group.col-md-6
+                                        label Name
+                                        input.form-control(type="text", name="name[#{locale.locale}]", value="#{_o(brand.name, locale.locale)}", autocomplete="off")
+                                    .form-group.col-md-6
+                                        label Title line
+                                        input.form-control(type="text", name="titleLine[#{locale.locale}]", value="#{_o(brand.titleLine, locale.locale)}", autocomplete="off")
+                                .row
+                                    .form-group.col-md-12
+                                        label Text
+                                        textarea.form-control(name="text[#{locale.locale}]") #{_o(brand.text, locale.locale)}
+                    .row
+                        .form-group.col-md-6
+                            label(for="brand-section-select") Section
+                            select#brand-section-select(data-placeholder="Please choose a section", autocomplete="off", name="section")
+                                option(value="")
+                                option(value="shop", selected=brand.section=='shop') Shop
+                                option(value="entertain", selected=brand.section=='entertain') Entertain
+                                option(value="dine", selected=brand.section=='dine') Dine
+                        .form-group.col-md-6
+                            label(for="room") Room
+                            input#room.form-control(type="text", name="room", value="#{brand.room}", tabindex="4", autocomplete="off")
+                    .row
+                        .form-group.col-md-6
+                            label(for="category") Category
+                            #shop-categories.brand-section-category(class=brand.section!='shop' ? 'hide' : '')
+                                select#category(data-placeholder="Please choose a category", autocomplete="off", name="shop-category")
+                                    option(value="")
+                                    option(value="fashion", selected=brand.category=='fashion') Fashion
+                                    option(value="kids", selected=brand.category=='kids') Kids
+                                    option(value="home", selected=brand.category=='home') Home
+                                    option(value="care-beauty", selected=brand.category=='care-beauty') Care beauty
+                                    option(value="food", selected=brand.category=='food') Food
+                                    option(value="other", selected=brand.category=='other') Services
+                                    option(value="accessories", selected=brand.accessories=='accessories') Accessories
+                            #entertain-categories.brand-section-category(class=brand.section!='entertain' ? 'hide' : '')
+                                select(data-placeholder="Please choose a category", autocomplete="off", name="entertain-category")
+                                    option(value="")
+                            #dine-categories.brand-section-category(class=brand.section!='dine' ? 'hide' : '')
+                                select(data-placeholder="Please choose a category", autocomplete="off", name="dine-category")
+                                    option(value="")
+                                    option(value="restaurants", selected=brand.category=='restaurants') Restaurants
+                                    option(value="cafes", selected=brand.category=='cafes') Cafes
+                                    option(value="fast-food", selected=brand.category=='fast-food') Fast Food
+                        .form-group.col-md-6
+                            label(for="floor") Floor
+                            input#floor.form-control(type="text", name="floor", value="#{brand.floor || ''}", tabindex="4", autocomplete="off")
+                    .row
+                        .form-group.col-md-6
+                            label(for="date") Date
+                            | &nbsp;
+                            input(type="checkbox", name="dateEnabled", checked=brand.date!=0)
+                            input#date.form-control(type="text", name="date", value="#{brand.date != 0 ? moment(brand.date).format('YYYY-MM-DD HH:mm:ss') : ''}", tabindex="5", autocomplete="off")
+                    .row.content-images
+                        .form-group.col-md-6
+                            label Images
+                            each image in images
+                                .row
+                                    .col-md-4
+                                        img(src="/uploads/#{image.file}" width="100")
+                                    .col-md-8
+                                        | order &nbsp;
+                                        input(type="text", name="order[id#{image.id}]", value="#{image.order || 0}")
+                                        br
+                                        a.delete(href="/admin/delete-image/#{image.id}") Delete image
+                            input#image(type="file", name="image")
+                        .form-group.col-md-6
+                            label(for="logo") Logo
+                            if (brand.logo)
+                                br
+                                img(src="/uploads/#{brand.logo}" width="100")
+                                a.delete(href="/admin/brand/delete-logo/#{brand.id}") Delete logo
+                            input#logo(type="file", name="logo", tabindex="6")
+            .panel-footer
+                button.btn.btn-primary.pull-right(type="submit", tabindex="7") Save
+                .clearfix

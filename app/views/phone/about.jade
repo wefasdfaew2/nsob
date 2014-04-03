@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    #about-page.clearfix
+        - var t = _o(section.text)
+        if t.trim().length > 0
+            .section-text.section-box
+                h2.about-title #{_l('ABOUT', 'Մեր մասին')}
+                .section-text-box !{t}
+        each ima in images
+            img.section-box.section-image.szg(src="/uploads/#{ima.file}")

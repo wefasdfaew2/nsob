@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+    .panel.panel-default
+        .panel-heading
+            a.btn.btn-primary(href="/admin/section/create") Create Section
+        .panel-body
+            table.table.table-hover
+                thead
+                    tr
+                        th Name
+                        th Delete
+                tbody
+                    if sections
+                        each section in sections
+                            tr
+                                td: a(href="/admin/section/#{section.id}") #{section.name}
+                                td
+                                    a.edit(href="/admin/section/#{section.id}") Edit
+                                    br
+                                    a.delete(href="/admin/section/delete?id=#{section.id}") Delete
+

@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+    .row
+        .col-md-4.col-md-offset-4.well
+            legend New User
+                if errors
+                    each error in errors
+                        .alert.alert-warning.alert-dismissable
+                            button.close(type="button", data-dismiss="alert", aria-hidden="true") &times;
+                            | #{error}
+                form(action="/emergency-console/new-user?token=#{token}", method="POST")
+                    .form-group
+                        label(for="email") E-mail
+                        input#email.form-control(type="text", name="email", placeholder="email", tabindex="1")
+                    .form-group
+                        label(for="password") Password
+                        input#password.form-control(type="text", name="password", placeholder="password", tabindex="2")
+                    .form-group
+                        label(for="confirm-password") Confirm Password
+                        input#confirm-password.form-control(type="text", name="confirm-password", placeholder="confirm", tabindex="3")
+                    input.btn.btn-primary.btn-block(type="submit", value="Submit", tabindex="4")

@@ -1,0 +1,674 @@
+@import "normalize.css"
+@import 'nib'
+@import "type-utils"
+
+base-font-size = 62.5%
+
+@font-face
+  font-family 'arian_amuregular'
+  src url(asset_path('arnamu-webfont.eot'))
+  src url(asset_path('arnamu-webfont.eot')) format('embedded-opentype'), url(asset_path('arnamu-webfont.woff')) format('woff'), url(asset_path('arnamu-webfont.ttf')) format('truetype');
+  font-weight normal
+  font-style normal
+
+*
+  -webkit-tap-highlight-color rgba(255, 255, 255, 0)
+  -webkit-tap-highlight-color transparent
+  -webkit-touch-callout none
+
+html[lang=en]
+  font-family 'Quicksand', sans-serif
+
+html[lang=hy]
+  font-family 'arian_amuregular'
+
+body
+  background url(asset_path('phone-background.png')) white no-repeat top right
+
+.clearfix
+  clearfix()
+
+header
+  height 160px
+  position relative
+
+.logo
+  position absolute
+  top 23px
+  left 41px
+  display block
+  width 119px
+  height 107px
+  background-image url(asset_path('phone-logo.png'))
+  background-repeat no-repeat
+  background-size 119px 107px
+
+.menu-button
+  position absolute
+  top 0
+  left 0
+  display block
+  width 33px
+  height 33px
+  background-image url(asset_path('phone-menu-icon.png'))
+  background-repeat no-repeat
+  background-size 33px 33px
+  background-position center center
+
+.menu-layer
+  position absolute
+  width 100%
+  top 82px
+  left 0
+  z-index 10
+  display none
+
+.sub-after
+  height 15px
+  margin-bottom -15px
+  display none
+  background-position 0 -30px
+
+.expanded .sub-after
+  display block
+
+.expanded > a
+  color white !important
+
+.menu
+  margin 0
+  padding 0
+
+.menu li
+  list-style none
+  text-transform uppercase
+
+.menu-bg
+  background-repeat no-repeat
+  background-position 0 0
+
+.menu-bg-active > a
+  color white !important
+
+.menu-1
+  background-image url(asset_path('phone-menu-normal-state-01.svg'))
+
+.menu-1:active, .menu-1.expanded, .menu-1 .sub-menu, .menu-1 .sub-menu li, .menu-1 .sub-after
+  background-image url(asset_path('phone-menu-clicked-state-01.svg'))
+
+.menu-2
+  background-image url(asset_path('phone-menu-normal-state-02.svg'))
+  margin-top -12px
+
+.menu-2:active, .menu-2.expanded, .menu-2 .sub-menu, .menu-2 .sub-menu li, .menu-2 .sub-after
+  background-image url(asset_path('phone-menu-clicked-state-02.svg'))
+
+.menu-3
+  background-image url(asset_path('phone-menu-normal-state-03.svg'))
+  margin-top -12px
+
+.menu-3:active
+  background-image url(asset_path('phone-menu-clicked-state-03.svg'))
+
+.menu-4
+  background-image url(asset_path('phone-menu-normal-state-04.svg'))
+  margin-top -12px
+
+.menu-4:active, .menu-4.expanded, .menu-4 .sub-menu, .menu-4 .sub-menu li, .menu-4 .sub-after
+  background-image url(asset_path('phone-menu-clicked-state-04.svg'))
+
+.menu-5
+  background-image url(asset_path('phone-menu-normal-state-05.svg'))
+  margin-top -12px
+
+.menu-5:active
+  background-image url(asset_path('phone-menu-clicked-state-05.svg'))
+
+.menu-6
+  background-image url(asset_path('phone-menu-normal-state-06.svg'))
+  margin-top -12px
+  color #2E0621
+
+.menu-6:active, .menu-6.expanded, .menu-6 .sub-menu, .menu-6 .sub-menu li, .menu-6 .sub-after
+  background-image url(asset_path('phone-menu-clicked-state-06.svg'))
+
+.menu-6.expanded a
+  color #2E0621 !important
+
+.menu-7
+  background-image url(asset_path('phone-menu-normal-state-07.svg'))
+  margin-top -13px
+
+.menu-7:active
+  background-image url(asset_path('phone-menu-clicked-state-07.svg'))
+
+.menu-bg a
+  background-position 0 -1px
+
+.menu li a
+  display block
+  text-decoration none
+  color #56314A
+  padding 0 0 0 75px
+  font-weight normal
+  font-size 20px
+  margin-bottom -10px
+
+.sub-menu
+  display none
+  padding 10px 0 0 0
+  background-position 0 -30px
+
+.sub-menu li
+  background-position 0 -30px
+
+.sub-menu li a
+  display block
+  margin 0
+  text-transform none
+
+.sub-menu li a.enabled
+  color white
+
+.visit-link
+  display inline-block
+  width 33px
+  height 33px
+  background-image url(asset_path('phone-social-icons.png'))
+  background-size 129px 65px
+  background-position 0 0
+
+.instagram-link
+  display inline-block
+  width 33px
+  height 33px
+  background-image url(asset_path('phone-social-icons.png'))
+  background-size 129px 65px
+  background-position -33px 0
+
+.twitter-link
+  display inline-block
+  width 33px
+  height 33px
+  background-image url(asset_path('phone-social-icons.png'))
+  background-size 129px 65px
+  background-position -66px 0
+
+.facebook-link
+  display inline-block
+  width 33px
+  height 33px
+  background-image url(asset_path('phone-social-icons.png'))
+  background-size 129px 65px
+  background-position -99px 0
+
+.button-panel
+  position absolute
+  top 0
+  right 0
+  margin 0
+  padding 0
+
+.button-panel li
+  float left
+  list-style none
+  line-height 0
+
+.language-bar-container
+  position relative
+
+.language-bar-container span
+  display inline-block
+  width 32px
+  height 32px
+  line-height 32px
+  text-align center
+  color #FCBB75
+  cursor default
+
+html[lang=en] .language-bar-container span
+  font-family 'Quicksand', sans-serif
+  font-size 16px !important
+
+html[lang=hy] .language-bar-container li
+  font-family 'Quicksand', sans-serif
+  font-size 16px !important
+
+html[lang=hy] .language-bar-container span
+  font-size 16px !important
+
+html[lang=en] .language-bar-container li
+  font-size 16px !important
+
+html[lang=hy] .brand-title, .event-title .box-title
+  color #56314A !imoportant
+
+html[lang=hy] .brand-subtitle, .event-subtitle .box-subtitle
+  color #56314A !imoportant
+
+html[lang=hy] .brand-text, .event-text .box-text
+  color #56314A !imoportant
+
+.language-bar-container.active .language-bar
+  display block
+
+.language-bar-container.active span
+  color #C5168C
+
+.language-bar
+  position absolute
+  margin 0
+  padding 0
+  display none
+
+.language-bar li
+  display inline-block
+  width 32px
+  height 31px
+  line-height 32px
+  text-align center
+  background #D3D8E5
+
+.language-bar li a
+  color #C5168C
+  text-decoration none
+
+.index-box, .shop-box
+  display block
+  position relative
+  margin-bottom 20px
+  overflow hidden
+
+.index-box img
+  width 100%
+  height 100%
+
+.index-box a
+  text-decoration none !important
+
+.index-box
+  text-decoration none !important
+
+#entertain-page img
+  margin-bottom 20px
+
+.shop-brand
+  float left
+  text-align center
+  line-height 120px
+  position relative
+  overflow hidden
+
+.shop-brand img
+  background white
+  position absolute
+  top 0shop
+  left 0
+  opacity 0
+  transition opacity .1s ease-in-out
+
+.levels-box
+  margin-bottom 20px
+
+.brand-map-level
+  position relative !important
+  float left !important
+  width 100%
+  margin 0 0 0 0
+
+.brand-map-level h3
+  text-align right
+  font-size 18px
+  line-height 20px
+
+.brand-level
+  position absolute
+  width 90%
+  height 20px
+  color #B0B0B1
+  top 0
+  left 0
+  margin-left 200
+
+.brand-image, .event-image
+  top 0
+  left 0
+  width 100%
+
+#brand-page img
+  margin-top 0px !important
+  margin-bottom 16px !important
+
+.shop-brand-placeholder
+  float left
+
+.brand-text p a, .event-text p a, .section-text p a, .how-box p a
+  text-decoration none
+  color #EC008B
+
+.shop-brand span
+  line-height 20px
+  text-transform uppercase
+  font-size 20px
+  color white
+  display inline-block
+  vertical-align middle
+  opacity 1
+  transition opacity .1s ease-in-out
+
+.box-label
+  position absolute
+  bottom 20px
+  left 0
+  background-repeat no-repeat
+  background-size 100% 100%
+
+.box-label-color-0
+  background-image url(asset_path('box-panel-01.svg'))
+
+.box-label-color-1
+  background-image url(asset_path('box-panel-02.svg'))
+
+.box-label-color-2
+  background-image url(asset_path('box-panel-03.svg'))
+
+.box-label-color-3
+  background-image url(asset_path('box-panel-04.svg'))
+
+.box-label-color-4
+  background-image url(asset_path('box-panel-05.svg'))
+
+.box-label-color-5
+  background-image url(asset_path('box-panel-06.svg'))
+
+.box-label-color-6
+  background-image url(asset_path('box-panel-07.svg'))
+
+.box-label-color-7
+  background-image url(asset_path('box-panel-08.svg'))
+
+.box-label-color-8
+  background-image url(asset_path('box-panel-09.svg'))
+
+.box-label-color-9
+  background-image url(asset_path('box-panel-10.svg'))
+
+.box-label-color-10
+  background-image url(asset_path('box-panel-11.svg'))
+
+.box-label-color-11
+  background-image url(asset_path('box-panel-12.svg'))
+
+.box-title
+  color white
+  font-size 19px
+  line-height 19px
+  font-weight 800
+  text-transform uppercase
+  margin 12px 5px 0 10px
+
+html[lang=hy] .box-title
+  font-size 17px
+  font-weight 400
+
+.box-subtitle
+  color white
+  font-size 15px
+  line-height 15px
+  font-weight 400
+  margin 0 5px 0 10px
+  font-style italic
+
+
+html[lang=hy] .box-subtitle
+  font-size 13px
+  font-weight 400
+
+.box-date
+  color white !important
+  font-size 11px
+  line-height 11px
+  font-weight 400
+  margin-left 10px
+  position absolute
+  bottom 4px
+  font-style italic
+  text-decoration none !important
+
+.numeric
+  font-family 'Quicksand', sans-serif
+
+.box-date a
+  color white !important
+  text-decoration none !important
+  pointer-events none !important
+  cursor default !important
+  font-style italic !important
+  text-decoration none !important
+
+html[lang=hy] .box-date
+  font-size 9px
+
+.brand-box, .event-box
+  margin 0 0 20px 0 !important
+  background white
+
+#brand-description, #event-description
+  background-color #F1F2F7
+  position relative
+  padding 6px 0 5px 0
+
+.brand-title, .event-title
+  text-transform uppercase
+  color #56314A
+  margin 13px 27px 0 27px
+  font-size 20px
+  line-height 20px
+
+.brand-subTitle, .event-subTitle
+  color #56314A
+  margin 8px 27px 0 27px
+  font-size 18px
+  line-height 18px
+  font-style italic
+
+.brand-text, .event-text
+  margin 25px 0 0px 27px
+  padding-right 15px
+  padding-bottom 11px
+  line-height 19px
+  font-size 16px
+  color #56314A
+
+.brand-text p, .event-text p
+  margin 0
+  font-size 16px
+  line-height 19px
+
+.brand-date, .event-date
+  font-size 11px
+  font-weight 200
+  color #56314A
+  margin -6px 0 5px 27px
+  font-style italic
+  text-decoration none !important
+
+.brand-date a
+  pointer-events none !important
+  cursor default !important
+  color #56314A !important
+  text-decoration none !important
+
+.brand-room
+  position absolute
+  top 42px
+  right 8px
+  color #F06692
+  font-size 12px
+  font-weight bold
+
+.brand-share
+  position absolute
+  top 0
+  right 0
+  width 33px
+  height 33px
+  background-image url(asset_path('phone-share-with-hover.png'))
+  background-repeat no-repeat
+  background-size 33px 65px
+
+.share-box
+  position absolute
+  top -33px
+  right 33px
+  width 132px
+  height 66px
+  display none
+
+.twitter-tweet
+  background-color #D1D9EC
+  background-image url(asset_path('phone-share-icons.png'))
+  background-position 0 0
+  background-size 128px 33px
+  margin-top 33px
+  width 33px
+  height 33px
+  float left
+
+.facebook-share
+  background-color #D1D9EC
+  background-image url(asset_path('phone-share-icons.png'))
+  background-position -33px 0
+  background-size 128px 33px
+  width 33px
+  height 33px
+  float left
+
+.gplus-share
+  background-color #D1D9EC
+  background-image url(asset_path('phone-share-icons.png'))
+  background-position -66px 0
+  background-size 128px 33px
+  margin-top 33px
+  width 33px
+  height 33px
+  float left
+
+.tumblr-share
+  background-color #D1D9EC
+  background-image url(asset_path('phone-share-icons.png'))
+  background-position -96px 0
+  background-size 128px 33px
+  width 33px
+  height 33px
+  float left
+
+#address-box
+  background-color #F1F2F7
+  position relative
+  padding 10px 30px
+  margin-bottom 20px
+
+#map-canvas
+  margin-bottom 20px
+
+.section-text
+  background-color #F1F2F7
+  padding 10px 30px
+  margin-bottom 20px !important
+
+.section-image
+  margin-bottom 20px !important
+  background-color white
+  width 100%
+
+@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 2dppx), (min-resolution: 192dpi)
+  .logo
+    background-image url(asset_path('phone-logo@2x.png'))
+
+  .menu-button
+    background-image url(asset_path('phone-menu-icon@2x.png'))
+
+  .visit-link, .instagram-link, .twitter-link, .facebook-link
+    background-image url(asset_path('phone-social-icons@2x.png'))
+
+  .brand-share
+    background-image url(asset_path('phone-share-with-hover@2x.png'))
+
+  .twitter-tweet
+    background-image url(asset_path('phone-share-icons@2x.png'))
+
+  .facebook-share
+    background-image url(asset_path('phone-share-icons@2x.png'))
+
+  .gplus-share
+    background-image url(asset_path('phone-share-icons@2x.png'))
+
+  .tumblr-share
+    background-image url(asset_path('phone-share-icons@2x.png'))
+
+
+
+.box-title-without-date
+  color white
+  font-size 19px
+  line-height 19px
+  font-weight 800
+  text-transform uppercase
+  margin 12px 5px 0 10px
+
+html[lang=hy] .box-title-without-date
+  font-size 17px
+  font-weight 400
+
+.box-title-without-date-2
+  color white
+  font-size 19px
+  line-height 19px
+  font-weight 800
+  text-transform uppercase
+  margin 20px 5px 0 10px
+
+html[lang=hy] .box-title-without-date-2
+  font-size 17px
+  font-weight 400
+
+.box-date-without-subtitle
+  color white !important
+  font-size 11px
+  line-height 11px
+  font-weight 400
+  margin-left 10px
+  position absolute
+  bottom 16px
+  font-style italic
+  text-decoration none !important
+
+html[lang=hy] .box-date-without-subtitle
+  font-size 9px
+
+.box-subtitle-alone
+  color white
+  font-size 15px
+  line-height 24px
+  font-weight 400
+  margin 0 5px 0 10px
+  font-style italic
+
+html[lang=hy] .box-subtitle-alone
+  font-size 13px
+  font-style italic
+
+.box-date-alone
+  color white !important
+  font-size 11px
+  line-height 11px
+  font-weight 400
+  margin-left 10px
+  position absolute
+  bottom 24px
+  font-style italic
+  text-decoration none !important
+
+html[lang=hy] .box-date-alone
+  font-size 9px

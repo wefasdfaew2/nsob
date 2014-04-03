@@ -1,0 +1,87 @@
+extends layout
+
+block content
+    .panel.panel-default
+        .panel-heading
+            a.btn.btn-primary(href="/admin/homepage") Boxes List
+        form(action="/admin/homeboxes/edit/#{homebox.id}", enctype="multipart/form-data", method="post")
+            .panel-body
+                if errors
+                    each error in errors
+                        .alert.alert-warning.alert-dismissable
+                            button.close(type="button", data-dismiss="alert", aria-hidden="true") &times;
+                            | #{error}
+                .col-md-8.col-md-offset-2
+                    .row
+                        .form-group.col-md-6
+                            label(for="type") Type
+                            select#type(data-placeholder="Please choose a type", autocomplete="off", name="type")
+                                option(value="")
+                                option(value="events", selected=homebox.type=='events') Events
+                                option(value="news", selected=homebox.type=='news') News
+                                option(value="brands", selected=homebox.type=='brands') Brands
+                                option(value="custom", selected=homebox.type=='custom') Custom
+                        .form-group.col-md-6
+                            label(for="order") Order
+                            input#order.form-control(type="text", name="order", value="#{homebox.order || '0'}", autocomplete="off")
+                    #custom(class=homebox.type=='custom' ? '' : 'hidden')
+                        ul.nav.nav-pills
+                            each locale, i in locales()
+                                li(class=i==0?"active":""): a(href="#lang_#{locale.locale}", data-toggle="pill") #{locale.locale}
+                        div.tab-content
+                            each locale, i in locales()
+                                div.tab-pane(class=i==0?"active":"", id="lang_#{locale.locale}")
+                                    .row
+                                        .form-group.col-md-6
+                                            label Title
+                                            input.form-control(type="text", name="title[#{locale.locale}]", value="#{homebox.title ? _o(homebox.title, locale.locale) : ''}", autocomplete="off")
+                                        .form-group.col-md-6
+                                            label Sub Title
+                                            input.form-control(type="text", name="subTitle[#{locale.locale}]", value="#{homebox.subTitle ? _o(homebox.subTitle, locale.locale) : ''}", autocomplete="off")
+                        .row
+                            .form-group.col-md-6
+                                label(for="date") Date
+                                | &nbsp;
+                                input(type="checkbox", name="dateEnabled", checked=homebox.date!=0)
+                                input#date.form-control(type="text", name="date", value="#{homebox.date != 0 ? moment(homebox.date).format('YYYY-MM-DD HH:mm:ss') : ''}", tabindex="4", autocomplete="off")
+                            .form-group.col-md-6
+                                label(for="image") Image
+                                if (homebox.image)
+                                    br
+                                    img(src="/uploads/#{homebox.image}" width="100")
+                                    a.delete(href="/admin/homeboxes/delete-image/#{homebox.id}") Delete image
+                                input#image(type="file", name="image", tabindex="5")
+                        .row
+                            .form-group.col-md-12
+                                label(for="link") Link
+                                input#link.form-control(type="text", name="link", value="#{homebox.link || ''}", tabindex="4", autocomplete="off")
+                    #events(class=homebox.type=='events' ? '' : 'hidden')
+                        .row
+                            .form-group.col-md-12
+                                label Event
+                                    select(data-placeholder="Please choose an event", autocomplete="off", name="event")
+                                        option(value="")
+                                        if events
+                                            each event in events
+                                                option(value="#{event.id}", selected=homebox.contentId==event.id && homebox.type=='events') #{_o(event.title)}
+                    #news(class=homebox.type=='news' ? '' : 'hidden')
+                        .row
+                            .form-group.col-md-12
+                                label News
+                                    select(data-placeholder="Please choose a news", autocomplete="off", name="news")
+                                        option(value="")
+                                        if news
+                                            each nw in news
+                                                option(value="#{nw.id}", selected=homebox.contentId==nw.id && homebox.type=='news') #{_o(nw.title)}
+                    #brands(class=homebox.type=='brands' ? '' : 'hidden')
+                        .row
+                            .form-group.col-md-12
+                                label Brands
+                                    select(data-placeholder="Please choose a brand", autocomplete="off", name="brand")
+                                        option(value="")
+                                        if brands
+                                            each brand in brands
+                                                option(value="#{brand.id}", selected=homebox.contentId==brand.id && homebox.type=='brands') #{_o(brand.name)}
+            .panel-footer
+                button.btn.btn-primary.pull-right(type="submit", tabindex="6") Save
+                .clearfix

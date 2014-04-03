@@ -1,0 +1,37 @@
+extends layout
+
+block content
+    #brand-page.clearfix(data-section="#{brand.section}")
+        - var t = _o(brand.text);
+        - var bfl = brand.floor.length;
+        - var bflc = 0;
+        if t.trim().length > 0
+            #brand-description.brand-box
+                h2.brand-title #{_o(brand.name)}
+                h3.brand-subTitle #{_o(brand.titleLine)}
+                .brand-text !{t}
+                if brand.date != 0
+                    .brand-date #{moment(brand.date).format('MM/ D/ YYYY')}
+                .brand-room N #{brand.room}
+                .brand-share(title="Share")
+                .share-box
+                    a.twitter-tweet(href="https://twitter.com/share", onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;", target="_blank")
+                    a.facebook-share(href="https://www.facebook.com/sharer/sharer.php?u=#{encodeURIComponent(url)}", onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;", target="_blank")
+                    a.gplus-share(href="https://plus.google.com/share?url=#{url}", onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;")
+                    a.tumblr-share(href="http://www.tumblr.com/share", title="Share on Tumblr")
+        each ima in images
+            if ima == images[bflc]
+                .brand-map-level
+                    img.brand-box.brand-image(src="/uploads/#{ima.file}")
+                    h3.brand-level #{_l('LEVEL', 'ՀԱՐԿ')}&nbsp;
+                        if brand.floor.charAt(bflc) == "3"
+                            | III 
+                        if brand.floor.charAt(bflc) == "2"
+                            | II
+                        if brand.floor.charAt(bflc) == "1"
+                            | I
+                if bflc < bfl - 1
+                    - bflc = bflc + 1
+            else
+                img.brand-box.brand-image(src="/uploads/#{ima.file}")
+                script(src="http://platform.tumblr.com/v1/share.js")

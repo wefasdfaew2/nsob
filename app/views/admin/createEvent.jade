@@ -1,0 +1,49 @@
+extends layout
+
+block content
+
+    .panel.panel-default
+        .panel-heading
+            a.btn.btn-primary(href="/admin/events") Events List
+        form(action="/admin/events/create", enctype="multipart/form-data", method="post")
+            .panel-body
+                if errors
+                    each error in errors
+                        .alert.alert-warning.alert-dismissable
+                            button.close(type="button", data-dismiss="alert", aria-hidden="true") &times;
+                            | #{error}
+                .col-md-8.col-md-offset-2
+                    ul.nav.nav-pills
+                        each locale, i in locales()
+                            li(class=i==0?"active":""): a(href="#lang_#{locale.locale}", data-toggle="pill") #{locale.locale}
+
+                    div.tab-content
+                        each locale, i in locales()
+                            div.tab-pane(class=i==0?"active":"", id="lang_#{locale.locale}")
+                                .row
+                                    .form-group.col-md-6
+                                        label Title
+                                        input.form-control(type="text", name="title[#{locale.locale}]", value="#{form.title ? form.title[locale.locale] : ''}", autocomplete="off")
+                                    .form-group.col-md-6
+                                        label Sub Title
+                                        input.form-control(type="text", name="subTitle[#{locale.locale}]", value="#{form.subTitle ? form.subTitle[locale.locale] : ''}", autocomplete="off")
+                                .row
+                                    .form-group.col-md-12
+                                        label Text
+                                        textarea.form-control(name="text[#{locale.locale}]") #{form.text ? form.text[locale.locale] : ''}
+                    .row
+                        .form-group.col-md-12
+                            label(for="link") Link
+                            input#link.form-control(type="text", name="link", value="#{form.link || ''}", tabindex="4", autocomplete="off")
+                    .row
+                        .form-group.col-md-6
+                            label(for="date") Date
+                            | &nbsp;
+                            input(type="checkbox", name="dateEnabled", checked=form.dateEnabled)
+                            input#date.form-control(type="text", name="date", value="#{form.date || ''}", tabindex="4", autocomplete="off")
+                        .form-group.col-md-6
+                            label(for="image") Image
+                            input#image(type="file", name="image", tabindex="5")
+            .panel-footer
+                button.btn.btn-primary.pull-right(type="submit", tabindex="6") Save
+                .clearfix

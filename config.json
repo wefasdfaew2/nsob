@@ -1,0 +1,4 @@
+{
+    "locales": ["en", "cz","es","ru"],
+    "postgresUrl": "postgres://postgres:@localhost:5432/ym"
+}

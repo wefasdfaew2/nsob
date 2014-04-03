@@ -1,0 +1,36 @@
+ul.menu
+    li.menu-bg.menu-1.expandable
+        a(href="javascript:void(0);") #{_l('visit', 'Այցելեք մեզ')}
+        ul.sub-menu
+            li: a(href="/visit/about") #{_l('about', 'Մեր մասին')}
+            li: a(href="/visit/how-to-get") #{_l('how to get', 'Ուղղություն')}
+        .sub-after
+    li.menu-bg.menu-2.expandable
+        a(href="javascript:void(0);") #{_l('levels', 'Քարտեզ')}
+        ul.sub-menu
+            li: a(href="/levels/first-floor") #{_l('first floor', 'Առաջին հարկ')}
+            li: a(href="/levels/second-floor") #{_l('second floor', 'Երկրորդ Հարկ')}
+            li: a(href="/levels/third-floor") #{_l('third floor', 'Երրորդ Հարկ')}
+        .sub-after
+    li.menu-bg.menu-3: a(href="/events") #{_l('events', 'Միջոցառումներ')}
+    li.menu-bg.menu-4#shop
+        a(href="/shop") #{_l('shop', 'Գնումներ')}
+        ul.sub-menu
+            li: a(data-brand-toggle="fashion") #{_l('fashion', 'Նորաձևություն')}
+            li: a(data-brand-toggle="accessories") #{_l('accessories', 'Աքսեսուարներ')}
+            li: a(data-brand-toggle="kids") #{_l('kids', 'Մանկական')}
+            li: a(data-brand-toggle="home") #{_l('home', 'Կենցաղ')}
+            li: a(data-brand-toggle="care-beauty") #{_l('care and beauty', 'Խնամք')}
+            //li: a(data-brand-toggle="food") #{_l('food', 'Սնունդ')}
+            li: a(data-brand-toggle="other") #{_l('services', 'Ծառայություններ')}
+        .sub-after
+    li.menu-bg.menu-5#entertain
+        a(href="/entertain") #{_l('entertain', 'Զվարճանք')}
+    li.menu-bg.menu-6#dine
+        a(href="/dine") #{_l('dine', 'Ընթրել')}
+        ul.sub-menu
+            li: a(data-brand-toggle="restaurants") #{_l('restaurants', 'Ռեստորաններ')}
+            li: a(data-brand-toggle="cafes") #{_l('cafes', 'Սրճարաններ')}
+            li: a(data-brand-toggle="fast-food") #{_l('food court', 'Ֆուդ կորտ')}
+        .sub-after
+    li.menu-bg.menu-7: a(href="/parking") #{_l('parking', 'Կայանատեղի')}

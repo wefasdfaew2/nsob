@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyActR5ZQafhkdr0BpdsTXtVoZ_dNQxWIKY&sensor=false")
+    script.
+        function initialize() {
+            var mapOptions = {
+                center: new google.maps.LatLng(40.15649128104278, 44.49917793273926),
+                zoom: 15,
+                mapTypeControl: false
+            };
+            var map = new google.maps.Map(document.getElementById("map-canvas"),
+                mapOptions);
+            var logoLatLng = new google.maps.LatLng(40.15548864811447, 44.49946492910385);
+            var mapLogo = new google.maps.Marker({
+                position: logoLatLng,
+                map: map,
+                icon: "#{asset_path('logo-for-map.png')}"
+            });
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    #howToGet-page.clearfix
+        .how-box#map-canvas
+        - var t = _o(section.text)
+        if t.trim().length > 0
+            .how-box#address-box
+                h2.how-to-get-title #{_l('CONTACTS', 'Հետադարձ կապ')} 
+                | !{t}

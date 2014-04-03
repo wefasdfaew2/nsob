@@ -1,0 +1,9 @@
+.DS_Store
+.rsync-exclude
+.git
+.gitignore
+.idea
+/package.json
+/uploads
+config.json
+/cache

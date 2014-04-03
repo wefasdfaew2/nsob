@@ -1,0 +1,19 @@
+if currentLocale().locale == "en"
+    span #{'en'}
+if currentLocale().locale == "cz"
+    span #{'cz'}
+if currentLocale().locale == "es"
+    span #{'es'}
+if currentLocale().locale == "ru"
+    span #{'ru'}
+ul.language-bar
+    each loc in locales()
+        if loc.locale != currentLocale().locale
+            if loc.locale == 'en'
+                li: a(href="#{loc.uri}") en
+            else
+                li: a(href="#{loc.uri}") cz
+            	if
+            		li: a(href="#{loc.uri}") es
+            	else
+            		li: a(href="#{loc.uri}") ru

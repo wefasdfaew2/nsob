@@ -1,0 +1,11 @@
+if currentLocale().locale == "hy"
+    span #{'հայ'}
+if currentLocale().locale == "en"
+    span #{'en'}
+ul.language-bar
+    each loc in locales()
+        if loc.locale != currentLocale().locale
+            if loc.locale == 'hy'
+                li: a(href="#{loc.uri}") հայ
+            else
+                li: a(href="#{loc.uri}") en

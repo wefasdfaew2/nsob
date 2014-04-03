@@ -1,0 +1,36 @@
+{
+  "name": "ym",
+  "description": "Yerevan Mall",
+  "version": "0.1.0",
+  "dependencies": {
+    "lodash":"2.4.x",
+    "async": "0.2.x",
+    "express": "3.4.x",
+    "express-device": "git+https://github.com/davo11122/express-device.git",
+    "jade":"1.1.x",
+    "stylus":"0.42.x",
+    "nib":"1.0.x",
+    "stylus-type-utils": "0.0.x",
+    "pbkdf2-hasher":"0.0.x",
+    "nconf": "0.6.x",
+    "winston": "0.7.x",
+    "pg": "2.11.x",
+    "db-kit": "0.1.x",
+    "passport": "0.1.x",
+    "passport-local":"0.1.x",
+    "connect-flash":"0.1.x",
+    "connect-multiparty": "1.0.x",
+    "uuid": "1.4.x",
+    "moment": "2.5.x",
+    "string": "1.8.x",
+    "connect": "2.13.x",
+    "connect-file-store": "0.0.x"
+  },
+  "devDependencies": {
+    "mincer": "0.5.x",
+    "uglify-js": "2.4.x",
+    "csso": "1.3.x",
+    "less": "1.6.x",
+    "wrench": "1.5.x"
+  }
+}

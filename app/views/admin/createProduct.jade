@@ -1,0 +1,82 @@
+extends layout
+
+block content
+
+    .panel.panel-default
+        .panel-heading
+            a.btn.btn-primary(href="/admin/products") Products List
+        form(action="/admin/products/create", enctype="multipart/form-data", method="post")
+            .panel-body
+                if errors
+                    each error in errors
+                        .alert.alert-warning.alert-dismissable
+                            button.close(type="button", data-dismiss="alert", aria-hidden="true") &times;
+                            | #{error}
+                .col-md-8.col-md-offset-2
+                    ul.nav.nav-pills
+                        each locale, i in locales()
+                            li(class=i==0?"active":""): a(href="#lang_#{locale.locale}", data-toggle="pill") #{locale.locale}
+                    div.tab-content
+                        each locale, i in locales()
+                            div.tab-pane(class=i==0?"active":"", id="lang_#{locale.locale}")
+                                .row
+                                    .form-group.col-md-6
+                                        label Name
+                                        input.form-control(type="text", name="name[#{locale.locale}]", value="#{form.name ? form.name[locale.locale] : ''}", autocomplete="off")
+                                    .form-group.col-md-6
+                                        label Title line
+                                        input.form-control(type="text", name="titleLine[#{locale.locale}]", value="#{form.titleLine ? form.titleLine[locale.locale] : ''}", autocomplete="off")
+                                .row
+                                    .form-group.col-md-12
+                                        label Text
+                                        textarea.form-control(name="text[#{locale.locale}]") #{form.text ? form.text[locale.locale] : ''}
+                    .row
+                        .form-group.col-md-6
+                            label(for="brand-section-select") Section
+                            select#brand-section-select(data-placeholder="Please choose a section", autocomplete="off", name="section")
+                                option(value="")
+                                option(value="shop", selected=form.section=='shop') Shop
+                                option(value="entertain", selected=form.section=='entertain') Entertain
+                                option(value="dine", selected=form.section=='dine') Dine
+                        .form-group.col-md-6
+                            label(for="room") Room
+                            input#room.form-control(type="text", name="room", value="#{form.room || ''}", tabindex="4", autocomplete="off")
+                    .row
+                        .form-group.col-md-6
+                            label(for="brand-section-select") Section
+                            #shop-categories.brand-section-category.hide
+                                select(data-placeholder="Please choose a category", autocomplete="off", name="shop-category")
+                                    option(value="")
+                                    option(value="fashion", selected=form.category=='fashion') Fashion
+                                    option(value="kids", selected=form.category=='kids') Kids
+                                    option(value="home", selected=form.category=='home') Home
+                                    option(value="care-beauty", selected=form.category=='care-beauty') Care beauty
+                                    option(value="food", selected=form.category=='food') Food
+                                    option(value="other", selected=form.category=='other') Services
+                                    option(value="accessories", selected=form.category=='accessories') Accessories
+                            #entertain-categories.brand-section-category.hide
+                                select(data-placeholder="Please choose a category", autocomplete="off", name="entertain-category")
+                                    option(value="")
+                            #dine-categories.brand-section-category.hide
+                                select(data-placeholder="Please choose a category", autocomplete="off", name="dine-category")
+                                    option(value="")
+                                    option(value="restaurants", selected=form.category=='restaurants') Restaurants
+                                    option(value="cafes", selected=form.category=='cafes') Cafes
+                                    option(value="fast-food", selected=form.category=='fast-food') Fast Food
+                        .form-group.col-md-6
+                            label(for="floor") Floor
+                            input#floor.form-control(type="text", name="floor", value="#{form.floor || ''}", autocomplete="off")
+                    .row
+                        .form-group.col-md-6
+                            label(for="date") Date
+                            | &nbsp;
+                            input(type="checkbox", name="dateEnabled", checked=form.dateEnabled)
+                            input#date.form-control(type="text", name="date", value="#{form.date || ''}", tabindex="4", autocomplete="off")
+                        .form-group.col-md-6
+                            label(for="logo") Logo
+                            input#logo(type="file", name="logo", tabindex="5")
+            .panel-footer
+                button.btn.btn-primary.pull-right(type="submit", tabindex="6") Save
+                .clearfix
+
+

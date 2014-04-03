@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    #events-page.clearfix
+
+        each event in events
+            a.index-box.szg(href="/event/#{event.id}/#{S(_o(event.title, 'en')).slugify().s}")
+                +bx(event)
+
+mixin bx(box)
+    - var img = box.image;
+    if img
+        img(src="#{ img.match(/^http/i) ? '' : '/uploads/' }#{img}", width="360", height="360")
+    .box-label(class="box-label-color-#{Math.floor(Math.random()*12)}")
+        if _o(box.title).length > 0
+            h2.box-title(style="#{ _o(box.subTitle).length == 0 && box.date == 0 ? 'margin-top:26px;' : '' }") #{_o(box.title)}
+        if _o(box.subTitle).length > 0
+            h3.box-subtitle #{_o(box.subTitle)}
+        if box.date != 0
+            span.box-date #{moment(box.date).format('MM/ D/ YYYY')}

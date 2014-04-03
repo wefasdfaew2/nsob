@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    #event-page.clearfix
+        - var t = _o(event.text)
+        if t.trim().length > 0
+            #event-description.event-box
+                h2.event-title #{_o(event.title)}
+                h3.event-subTitle #{_o(event.subTitle)}
+                .event-text !{t}
+                if event.date != 0
+                    .event-date #{moment(event.date).format('MM/ D/ YYYY')}
+        each ima in event.images
+            img.event-box.event-image(src="/uploads/#{ima.file}")

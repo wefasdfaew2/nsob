@@ -1,0 +1,45 @@
+extends layout
+
+block content
+
+    .well.col-md-6.col-md-offset-3
+        h3 Administrator Profile
+
+        form.ajaxForm(action="/admin/profile", method="post")
+            .form-group
+                label(for="email") E-mail
+                input#email.form-control(type="text", name="email", tabindex="1", autocomplete="off", value="#{user.email}")
+
+            .form-group
+                label(for="firstName") First Name
+                input#firstName.form-control(type="text", name="firstName", tabindex="2", autocomplete="off", value="#{user.firstName || ''}")
+
+            .form-group
+                label(for="lastName") Last Name
+                input#lastName.form-control(type="text", name="lastName", tabindex="3", autocomplete="off", value="#{user.lastName || ''}")
+
+            .form-group
+                label(for="password") Confirm Password
+                input#password.form-control(type="password", name="password", tabindex="4", autocomplete="off")
+
+            .form-group
+                button.btn.btn-primary.pull-right(type="submit", tabindex="5") Update
+
+    .well.col-md-6.col-md-offset-3
+        h3 Change Password
+
+        form.ajaxForm.ajaxClear(action="/admin/profile/password", method="post")
+            .form-group
+                label(for="currentPassword") Current Password
+                input#currentPassword.form-control(type="password", name="currentPassword", tabindex="6", autocomplete="off")
+
+            .form-group
+                label(for="newPassword") New Password
+                input#newPassword.form-control(type="password", name="newPassword", tabindex="7", autocomplete="off")
+
+            .form-group
+                label(for="repeatPassword") Repeat Password
+                input#repeatPassword.form-control(type="password", name="repeatPassword", tabindex="8", autocomplete="off")
+
+            .form-group
+                button.btn.btn-primary.pull-right(type="submit", tabindex="9") Change

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    #parking-page.clearfix
+        - var t = _o(section.text)
+        if t.trim().length > 0
+            .section-text.section-box
+                h2.parking-title #{_l('PARKING', 'Կայանատեղի')} 
+                .section-text-box
+                    | !{t}
+        each ima in images
+            img.section-box.section-image(src="/uploads/#{ima.file}")

@@ -1,0 +1,789 @@
+//= require jquery.qtip.css
+
+@import "normalize.css"
+@import 'nib'
+@import "type-utils"
+
+base-font-size = 62.5%
+
+@font-face {
+  font-family: 'arian_amuregular';
+  src: url(asset_path('arnamu-webfont.eot'));
+  src: url(asset_path('arnamu-webfont.eot')) format('embedded-opentype'), url(asset_path('arnamu-webfont.woff')) format('woff'), url(asset_path('arnamu-webfont.ttf')) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html[lang=en]
+  font-family 'Raleway', sans-serif
+
+html[lang=hy]
+  font-family 'arian_amuregular'
+
+html[lang=hy] .language-bar-container span
+  font-family 'arian_amuregular'
+
+html[lang=en] .language-bar-container li
+  font-family 'arian_amuregular'
+
+body
+  background url(asset_path('background.png')) 15px 0 white no-repeat
+
+.clearfix
+  clearfix()
+
+header
+  height 108px
+  overflow hidden
+
+nav
+  float left
+
+.logo
+  display inline-block
+  margin 13px 0 0 42px
+
+.button-panel
+  position absolute
+  top 0
+  right 0
+  margin 0
+  padding 0
+  width 180px
+
+.button-panel li
+  float left
+  list-style none
+  line-height 0
+
+.visit-link
+  display inline-block
+  width 30px
+  height 30px
+  margin 3px
+  background url(asset_path('social-icons.png')) 7px 4px no-repeat
+
+.visit-link:hover
+  background url(asset_path('social-icons.png')) 7px -32px no-repeat
+
+.instagram-link
+  display inline-block
+  width 30px
+  height 30px
+  margin 3px
+  background url(asset_path('social-icons.png')) -28px 4px no-repeat
+
+.instagram-link:hover
+  background url(asset_path('social-icons.png')) -28px -32px no-repeat
+
+.twitter-link
+  display inline-block
+  width 30px
+  height 30px
+  margin 3px
+  background url(asset_path('social-icons.png')) -63px 4px no-repeat
+
+.twitter-link:hover
+  background url(asset_path('social-icons.png')) -63px -32px no-repeat
+
+.facebook-link
+  display inline-block
+  width 30px
+  height 30px
+  margin 3px
+  background url(asset_path('social-icons.png')) -100px 4px no-repeat
+
+.facebook-link:hover
+  background url(asset_path('social-icons.png')) -100px -32px no-repeat
+
+.language-bar-container
+  position relative
+  font-size 14px
+
+html[lang=hy] .language-bar-container
+  font-family "Raleway"
+
+.language-bar-container span
+  display inline-block
+  width 36px
+  height 36px
+  line-height 36px
+  text-align center
+  color #FCBB75
+  background #F0F0F2
+  cursor default
+
+.language-bar-container:hover .language-bar
+  display block
+
+.language-bar-container:hover span
+  color #C5168C
+
+.language-bar
+  position absolute
+  margin 0
+  padding 0
+  display none
+
+.language-bar li
+  display inline-block
+  width 36px
+  height 36px
+  line-height 36px
+  text-align center
+  background #D3D8E5
+
+.language-bar li a
+  color #C5168C
+  text-decoration none
+
+.menu
+  width 145px
+  padding 0
+  margin 0 0 0 15px
+
+.menu li
+  list-style none
+  text-transform uppercase
+
+  font-weight 400
+  line-height 14px
+  font-size 16px
+  cursor pointer
+  min-height 40px
+
+.menu li a:hover
+  color white
+
+html[lang=hy] .menu li
+  font-size 13px
+  line-height 14px
+
+html[lang=hy] .menu li a
+  padding 13px 0 13px 9px
+  font-weight 400
+
+.menu li a
+  display block
+  text-decoration none
+  color #56314A
+  padding 13px 0 13px 22px
+  width 123px
+  margin-bottom -8px
+
+.sub-menu
+  display none
+  padding 10px 0 0 0
+
+.sub-menu li
+  min-height 0
+
+.sub-menu li a
+  display block
+  padding 4px 5px 5px 11px !important
+  margin 0
+  text-transform none
+  width 129px
+  font-size 14px
+
+html[lang=hy] .sub-menu li a
+  font-size 12px
+
+.sub-menu li:hover a
+  color white !important
+
+.sub-menu li a.enabled
+  color white !important
+
+.sub-menu li a.un-enabled
+  color #56314A !important
+
+.sub-menu li a.un-enabled-2
+  color #2E0621 !important
+
+.sub-menu li:first-letter
+  text-transform uppercase
+
+.menu-bg
+  background-image url(asset_path('menu-normal-state.png'))
+  background-repeat no-repeat
+
+.sub-after
+  height 15px
+  margin-bottom -15px
+  display none
+
+.expanded .sub-after
+  display block
+
+.expanded > a
+  color white !important
+
+.menu-bg-active > a
+  color white !important
+
+.menu-bg:hover, .menu-bg.expanded, .menu-bg .sub-menu, .menu-bg .sub-menu li, .sub-after, .menu-bg-active
+  background-image url(asset_path('menu-hover-state.png'))
+
+.menu-2
+  background-position 0 -42px
+  margin-top -8px
+
+.menu-2 .sub-menu, .menu-2 .sub-menu li, .menu-2 .sub-after
+  background-position 0 -50px
+
+.menu-1 .sub-menu, .menu-1 .sub-menu li, .menu-1 .sub-after
+  background-position 0 0
+
+.menu-4 .sub-menu, .menu-4 .sub-menu li, .menu-4 .sub-after
+  background-position 0 -137px
+
+.menu-6 .sub-menu, .menu-6 .sub-menu li, .menu-6 .sub-after
+  background-position 0 -222px
+
+.menu-3
+  background-position 0 -86px
+  margin-top -8px
+
+.menu-4
+  background-position 0 -129px
+  margin-top -8px
+
+.menu-5
+  background-position 0 -172px
+  margin-top -8px
+
+.menu-6
+  background-position 0 -215px
+  margin-top -8px
+
+.menu-6.expanded a
+  color #2E0621 !important
+
+.menu-6.expanded > a
+  color white !important
+
+.menu-7
+  background-position 0 -258px
+  margin-top -8px
+
+#page-content
+  margin 0 0 0 196px
+
+#index-page
+  overflow hidden
+
+.shop-box, .levels-box, .how-box, .brand-box, .section-box, .event-box
+  width 360px
+  height 360px
+  float left
+  margin 0 36px 36px 0
+
+.index-box
+  width 360px
+  height 360px
+  float left
+  margin 0 36px 36px 0
+  background white
+  position relative
+
+.index-box:hover img
+  opacity 0.5
+
+.index-box:hover .box-label
+  opacity 1
+
+.index-box:hover h2
+  opacity 0.75
+
+.index-box:hover h3
+  opacity 0.75
+
+.index-box:hover span
+  opacity 0.75
+
+.shop-brand
+  width 120px
+  height 120px
+  float left
+  text-align center
+  line-height 120px
+  position relative
+  overflow hidden
+
+.shop-brand-placeholder
+  width 120px
+  height 120px
+  float left
+
+.shop-brand-span
+  line-height 20px
+  text-transform uppercase
+  font-size 20px
+
+  color white
+  display inline-block
+  vertical-align middle
+  opacity 1
+  transition opacity .1s ease-in-out
+
+html[lang=hy] .shop-brand span
+  font-size 18px
+  line-height 18px
+
+.shop-brand img
+  background white
+  position absolute
+  top 0shop
+  left 0
+  opacity 0
+  transition opacity .1s ease-in-out
+
+.shop-brand[loaded=loaded]:hover span
+  opacity 0
+
+.shop-brand[loaded=loaded]:hover img
+  opacity 1
+
+.hidden
+  display none
+
+.box-label
+  position absolute
+  top 273px
+  left 0
+  width 360px
+  height 67px
+  background-image url(asset_path('box-panel.png'))
+  background-repeat no-repeat
+
+.box-label-color-0
+  background-position 0 0
+
+.box-label-color-1
+  background-position 0 -68px
+
+.box-label-color-2
+  background-position 0 -136px
+
+.box-label-color-3
+  background-position 0 -204px
+
+.box-label-color-4
+  background-position 0 -275px
+
+.box-label-color-5
+  background-position 0 -344px
+
+.box-label-color-6
+  background-position 0 -412px
+
+.box-label-color-7
+  background-position 0 -482px
+
+.box-label-color-8
+  background-position 0 -551px
+
+.box-label-color-9
+  background-position 0 -620px
+
+.box-label-color-10
+  background-position 0 -689px
+
+.box-label-color-11
+  background-position 0 -758px
+
+.hover-color-0
+  background #fbbb76 !important
+
+.hover-color-1
+  background #f4835e !important
+
+.hover-color-2
+  background #f05b5b !important
+
+.hover-color-3
+  background #d01f5c !important
+
+.hover-color-4
+  background #eb008b !important
+
+.hover-color-5
+  background #f17ea7 !important
+
+.hover-color-6
+  background #ef6692 !important
+
+.hover-color-7
+  background #be5680 !important
+
+.hover-color-8
+  background #c5168c !important
+
+.hover-color-9
+  background #8e1176 !important
+
+.hover-color-10
+  background #9d76b3 !important
+
+.hover-color-11
+  background #835894 !important
+
+.box-title
+  color #221216
+  font-size 18px
+  line-height 19px
+  font-weight 700
+  text-transform uppercase
+  margin 10px 5px 0 25px
+  color white
+
+html[lang=hy] .box-title
+  font-size 17px
+  font-weight 400
+
+.box-subtitle
+  color #221216
+  font-size 15px
+  line-height 15px
+  font-weight 400
+  margin 2px 5px 0 25px
+  font-style italic
+  color white
+
+html[lang=hy] .box-subtitle
+  font-size 13px
+  font-weight 400
+
+.box-date
+  font-size 11px
+  line-height 11px
+  font-weight 400
+  margin-left 25px
+  position absolute
+  bottom 6px
+  font-style italic
+  color white
+  font-family 'Quicksand', sans-serif
+
+.numeric
+  font-family 'Quicksand', sans-serif
+
+#brand-description, #event-description
+  background-color #F1F2F7
+  position relative
+  overflow hidden
+
+#brand-map
+  background-color #F1F2F7
+
+.brand-map-level
+  position relative !important
+  float left !important
+  width 360px
+  height 360px
+  margin 0 36px 36px 0
+
+.brand-map-level h3
+  text-align right
+  font-size 18px
+  line-height 2px
+
+.brand-level
+  position absolute
+  width 350px
+  height 20px
+  color #B0B0B1
+  top 0
+  left 0
+  margin-left 200
+
+.brand-image
+  top 0
+  left 0
+
+.brand-title, .event-title
+  text-transform uppercase
+  color #56314A
+  margin 33px 27px 0 25px
+  font-size 18px
+  line-height 18px
+
+.brand-subTitle, .event-subTitle
+  color #56314A
+  margin 8px 27px 0 25px
+  font-size 16px
+  line-height 16px
+  font-style italic
+  font-weight normal
+
+html[lang=hy] .brand-subtitle
+  font-size 14px
+
+.brand-text, .event-text
+  height 250px
+  width 306px
+  padding-right 27px
+  line-height 17px
+  color #56314A !imoportant
+  position absolute
+  left 27px
+  top 87px
+
+html[lang=hy] .brand-text p
+  line-height 18px
+
+html[lang=hy] .brand-title, .event-title .box-title
+  color #56314A !imoportant
+
+html[lang=hy] .brand-subtitle, .event-subtitle .box-subtitle
+  color #56314A !imoportant
+
+html[lang=hy] .brand-text, .event-text .box-text
+  color #56314A !imoportant
+
+.how-box
+  font-size 14px
+  line-height 17px
+
+.how-box p
+  margin-left 25px !important
+  color #56314A
+
+.brand-text p, .event-text p
+  margin 0
+  font-size 13px
+  line-height 16px
+  color #56314A
+
+.brand-text p a, .event-text p a, .section-text p a, .how-box p a
+  text-decoration none
+  color #EC008B
+
+.brand-date, .event-date
+  font-size 11px
+  font-weight 300
+  position absolute
+  bottom 4px
+  left 25px
+  color #56314A
+  font-family 'Quicksand', sans-serif
+
+.section-text-box, .event-text, .brand-text
+  text-align justify
+
+.brand-room
+  position absolute
+  top 42px
+  right 8px
+  color #F06692
+  font-size 12px
+  font-weight bold
+  font-family 'Quicksand', sans-serif
+
+.brand-share
+  position absolute
+  top 0
+  right 0
+  width 36px
+  height 36px
+  background url(asset_path('share-with-hover.png')) no-repeat 0 0
+  cursor pointer
+
+.brand-share:hover
+  background url(asset_path('share-with-hover.png')) no-repeat 0 -36px
+
+.nicescroll-rails
+  width 1.875px !important
+  background #E6E7E8 !important
+  top 195px !important
+
+.nicescroll-rails div
+  margin-right -2px
+
+.nicescroll-rails div:hover
+  background-color #F4835E !important
+
+.share-box
+  position absolute
+  top -36px
+  left 180px
+  width 144px
+  height 72px
+  display none
+
+.twitter-tweet
+  background-color #D1D9EC
+  background-image url(asset_path('share-icons.png'))
+  background-position 0 0
+  margin-top 36px
+  width 36px
+  height 36px
+  float left
+
+.facebook-share
+  background-color #D1D9EC
+  background-image url(asset_path('share-icons.png'))
+  background-position -36px 0
+  width 36px
+  height 36px
+  float left
+
+.gplus-share
+  background-color #D1D9EC
+  background-image url(asset_path('share-icons.png'))
+  background-position -72px 0
+  margin-top 36px
+  width 36px
+  height 36px
+  float left
+
+.tumblr-share
+  background-color #D1D9EC
+  background-image url(asset_path('share-icons.png'))
+  background-position -108px 0
+  width 36px
+  height 36px
+  float left
+
+.active-page a
+  color white !important
+
+#address-box
+  background-color #F1F2F7
+
+#address-box p
+  margin 16px
+
+.section-text
+  background-color #F1F2F7
+  position relative
+  overflow hidden
+
+.section-text p
+  width:320px
+
+.section-text-box
+  height 250px
+  width 306px
+  padding-right 27px
+  color #56314A
+  position absolute
+  left 27px
+  top 87px
+  font-size 14px
+
+.section-text-box p
+  width 306px
+  padding-right 27px
+
+.how-to-get-title
+  margin-left 25px
+  color #56314A
+  font-size 18px
+  margin-top 33px
+
+.parking-title, .about-title
+  margin-left 25px
+  color #56314A
+  font-size 18px
+  margin-top 33px
+
+#dine
+  color white
+
+#text_svg
+  display none
+
+#polyline_svg:hover #text_svg
+  display something
+
+.s404
+ text-align center
+ background-image none
+ color black
+
+.s404en
+ padding-top 240px
+ font-family 'Raleway', sans-serif
+ font-weight 400
+ font-size 24px
+ color black !important
+
+.s404hy
+ margin-top -8px
+ font-family 'arian_amuregular'
+ font-weight 400
+ font-size 20px
+ color black !important
+
+.s404logo > img
+ position absolute
+ margin-left 50%
+ left -45.5px
+ margin-top 80px
+
+.s404 a
+ text-decoration none
+ color #EC008B
+ font-family 'Raleway', sans-serif
+ font-weight 400
+ font-size 24px
+ line-height 96px
+
+.qtip
+  border solid 1px #ed9a94
+  background #f2595b
+
+.qtip-content
+  text-transform uppercase
+  color white
+  font-family 'Raleway', sans-serif
+
+.box-title-without-date
+  color #221216
+  font-size 18px
+  line-height 19px
+  font-weight 700
+  text-transform uppercase
+  margin 18px 5px 0 25px
+  color white
+
+html[lang=hy] .box-title-without-date
+  font-size 17px
+  font-weight 400
+
+.box-date-without-subtitle
+  font-size 11px
+  line-height 11px
+  font-weight 400
+  margin-left 25px
+  position absolute
+  bottom 16px
+  font-style italic
+  color white
+  font-family 'Quicksand', sans-serif
+
+.box-subtitle-alone
+  color #221216
+  font-size 15px
+  line-height 32px
+  font-weight 400
+  margin 2px 5px 0 25px !important
+  font-style italic
+  color white
+
+html[lang=hy] .box-subtitle-alone
+  font-size 13px
+  font-weight 400
+
+.box-date-alone
+  font-size 11px
+  line-height 11px
+  font-weight 400
+  margin-left 25px
+  position absolute
+  bottom 26px
+  font-style italic
+  color white
+  font-family 'Quicksand', sans-serif

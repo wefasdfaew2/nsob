@@ -1,0 +1,28 @@
+extends layout
+
+block content
+
+    .panel.panel-default
+        .panel-heading
+            a.btn.btn-primary(href="/admin/homeboxes/create") Create Box
+        .panel-body
+            table.table.table-hover
+                thead
+                    tr
+                        th Title
+                        th Sub Title
+                        th Date
+                        th Type
+                        th Actions
+                tbody
+                    if boxes
+                        each box in boxes
+                            tr
+                                td: a(href="/admin/homeboxes/edit/#{box.bid}") #{box.title || box.name ? _o(box.title || box.name) : ''}
+                                td #{box.subTitle || box.titleLine ? _o(box.subTitle || box.titleLine) : ''}
+                                td #{box.date != 0 ? new Date(box.date) : ''}
+                                td #{box.type}
+                                td
+                                    a.edit(href="/admin/homeboxes/edit/#{box.bid}") Edit
+                                    br
+                                    a.delete(href="/admin/homeboxes/delete?id=#{box.bid}") Delete

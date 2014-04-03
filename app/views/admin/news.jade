@@ -1,0 +1,26 @@
+extends layout
+
+block content
+
+    .panel.panel-default
+        .panel-heading
+            a.btn.btn-primary(href="/admin/news/create") Create News
+        .panel-body
+            table.table.table-hover
+                thead
+                    tr
+                        th Title
+                        th Sub Title
+                        th Date
+                        th Actions
+                tbody
+                    if news
+                        each nw in news
+                            tr
+                                td: a(href="/admin/news/edit/#{nw.id}") #{_o(nw.title)}
+                                td #{_o(nw.subTitle)}
+                                td #{nw.date != 0 ? new Date(nw.date) : ''}
+                                td
+                                    a.edit(href="/admin/news/edit/#{nw.id}") Edit
+                                    br
+                                    a.delete(href="/admin/news/delete?id=#{nw.id}") Delete

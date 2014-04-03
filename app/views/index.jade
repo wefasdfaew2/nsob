@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    #index-page.clearfix
+        each box in boxes
+            - var rand_color = Math.floor(Math.random()*12);
+            - if (box.type == 'brand') box.link = '/brand/' + box.id + '/' + S(_o(box.name, 'en')).slugify().s
+            if box.link
+                a.index-box(href="#{box.link.match(/^(\/|http:\/\/)/i) ? '' : 'http://'}#{box.link}", target="#{box.link.match(/^http/i) ? '_blank' : '_self'}", class="hover-color-#{rand_color}")
+                    +bx(box, rand_color)
+            else
+                .index-box(class="hover-color-#{rand_color}")
+                    +bx(box, rand_color)
+
+mixin bx(box, rand_color)
+    - var img = box.image;
+    if img
+        
+    .box-label(class="box-label-color-#{rand_color}")
+
+

@@ -1,0 +1,26 @@
+extends layout
+
+block content
+
+    .panel.panel-default
+        .panel-heading
+            a.btn.btn-primary(href="/admin/events/create") Create Event
+        .panel-body
+            table.table.table-hover
+                thead
+                    tr
+                        th Title
+                        th Sub Title
+                        th Date
+                        th Delete
+                tbody
+                    if events
+                        each event in events
+                            tr
+                                td: a(href="/admin/events/edit/#{event.id}") #{_o(event.title)}
+                                td #{_o(event.subTitle)}
+                                td #{event.date != 0 ? new Date(event.date) : ''}
+                                td
+                                    a.edit(href="/admin/events/edit/#{event.id}") Edit
+                                    br
+                                    a.delete(href="/admin/events/delete?id=#{event.id}") Delete

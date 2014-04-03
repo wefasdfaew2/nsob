@@ -1,0 +1,14 @@
+doctype html
+html(lang="#{currentLocale().locale}")
+    head
+        meta(charset="utf-8")
+        link(rel="shortcut icon", href="#{asset_path('favicon.ico')}")
+        link(href="http://fonts.googleapis.com/css?family=Raleway:500" rel="stylesheet" type="text/css")
+        != css("desktop.css")
+        != js("desktop.js")
+    body.s404
+        a.s404logo(href="/")
+            img(src="#{asset_path(_l('logo.png', 'logo_hy.png'))}", alt="logo")
+        h2.s404en Sorry, this page was not found
+        h2.s404hy Ներողություն, այսպիսի էջ գոյություն չունի
+        a(href="/") yerevanmall.am
