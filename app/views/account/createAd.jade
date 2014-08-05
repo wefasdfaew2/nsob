@@ -1,0 +1,148 @@
+extends layout
+block content
+    .panel.panel-default
+        .panel-heading
+            a.btn.btn-primary(href="/account/ads") Ads List
+        form(action="/account/ads/create", enctype="multipart/form-data", method="post")
+            .panel-body
+                if errors
+                    each error in errors
+                        .alert.alert-warning.alert-dismissable
+                            button.close(type="button", data-dismiss="alert", aria-hidden="true") &times;
+                            | #{error}
+                .col-md-8.col-md-offset-2
+                    ul.nav.nav-pills
+                        each locale, i in locales()
+                            li(class=i==0?"active":""): a(href="#lang_#{locale.locale}", data-toggle="pill") #{locale.locale}
+                    div.tab-content
+                        each locale, i in locales()
+                            div.tab-pane(class=i==0?"active":"", id="lang_#{locale.locale}")
+                                .row
+                                    .form-group.col-md-6
+                                        label - комнатная квартира
+                                        input.form-control(type="text", name="card_rooms[#{locale.locale}]", value="#{form.card_rooms ? form.card_rooms[locale.locale] : ''}", autocomplete="off")
+                                    .form-group.col-md-6
+                                        label Адрес:
+                                        input.form-control(type="text", name="card_address[#{locale.locale}]", value="#{form.card_address ? form.card_address[locale.locale] : ''}", autocomplete="off")
+                                .row
+                                    .form-group.col-md-6
+                                        label дом
+                                        input.form-control(type="text", name="dom[#{locale.locale}]", value="#{form.dom ? form.dom[locale.locale] : ''}", autocomplete="off")
+                                    .form-group.col-md-6
+                                        label к
+                                        input.form-control(type="text", name="korpus[#{locale.locale}]", value="#{form.korpus ? form.korpus[locale.locale] : ''}", autocomplete="off")
+                                .row
+                                    .form-group.col-md-6
+                                        label с
+                                        input.form-control(type="text", name="stroenie[#{locale.locale}]", value="#{form.stroenie ? form.stroenie[locale.locale] : ''}", autocomplete="off")
+                                    .form-group.col-md-6
+                                        label метро
+                                        input.form-control(type="text", name="fdataMetroId_h[#{locale.locale}]", value="#{form.fdataMetroId_h ? form.fdataMetroId_h[locale.locale] : ''}", autocomplete="off")
+                                .row
+                                    .form-group.col-md-6
+                                        label минут до метро
+                                        input.form-control(type="text", name="farval[#{locale.locale}]", value="#{form.farval ? form.farval[locale.locale] : ''}", autocomplete="off")
+                                    .form-group.col-md-6
+                                        label(for="brand-section-select") Section
+                                        select#brand-section-select(data-placeholder="Please choose a section", autocomplete="off", name="afoot")
+                                            option(value="")
+                                            option(value="afoot", selected=form.section=='afoot') пешком
+                                            option(value="transport", selected=form.section=='transport') транспортом
+                                .row
+                                    .form-group.col-md-6
+                                        label этаж
+                                        input.form-control(type="text", name="levels[#{locale.locale}]", value="#{form.levels ? form.levels[locale.locale] : ''}", autocomplete="off")
+                                    .form-group.col-md-6
+                                        label этажного дома
+                                        input.form-control(type="text", name="fullevel[#{locale.locale}]", value="#{form.fullevel ? form.fullevel[locale.locale] : ''}", autocomplete="off")
+                                .row
+                                    .form-group.col-md-6
+                                        label(for="brand-section-select") Тип дома:
+                                        select#brand-section-select(data-placeholder="Please choose a section", autocomplete="off", name="afoot")
+                                            option(value="")
+                                            option(value="block", selected=form.section=='block') блочный
+                                            option(value="panel", selected=form.section=='panel') панельный
+                                            option(value="stone", selected=form.section=='stone') кирпичный
+                                            option(value="stalin", selected=form.section=='stalin') сталинский
+                                            option(value="monolithic", selected=form.section=='monolithic') монолитный
+                                            option(value="elite", selected=form.section=='elite') элитный
+                                            option(value="brick", selected=form.section=='brick') монолитно-кирпичный
+                                            option(value="block_panel", selected=form.section=='block_panel') блочно-панельный
+                                    .form-group.col-md-6
+                                        label(for="new") Новостройка
+                                        | &nbsp;
+                                        input(type="checkbox", name="newEnabled", checked=form.newEnabled)
+
+                                .row
+                                    .form-group.col-md-6
+                                        label Общая
+                                        input.form-control(type="text", name="general[#{locale.locale}]", value="#{form.general ? form.general[locale.locale] : ''}", autocomplete="off")
+                                    .form-group.col-md-6
+                                        label Жилая
+                                        input.form-control(type="text", name="residential[#{locale.locale}]", value="#{form.residential ? form.residential[locale.locale] : ''}", autocomplete="off")
+                                    .form-group.col-md-6
+                                        label Кухня
+                                        input.form-control(type="text", name="kitchen[#{locale.locale}]", value="#{form.kitchen ? form.kitchen[locale.locale] : ''}", autocomplete="off")
+                                .row
+                                    .form-group.col-md-6
+                                        label Площади комнат
+                                        input.form-control(type="text", name="square_rooms[#{locale.locale}]", value="#{form.square_rooms ? form.square_rooms[locale.locale] : ''}", autocomplete="off")
+                                    .form-group.col-md-6
+                                        label(for="brand-section-select") Состояние квартиры:
+                                        select#brand-section-select(data-placeholder="Please choose a section", autocomplete="off", name="afoot")
+                                            option(value="")
+                                            option(value="requires_overhaul", selected=form.section=='requires_overhaul') требуется капитальный ремонт
+                                            option(value="poor_state", selected=form.section=='poor_state') плохое состояние
+                                            option(value="finishing", selected=form.section=='finishing') без отделки
+                                            option(value="requires_repair", selected=form.section=='requires_repair') требуется ремонт
+                                            option(value="average", selected=form.section=='average') среднее состояние
+                                            option(value="good_condition", selected=form.section=='good_condition') хорошее состояние
+                                            option(value="renovated", selected=form.section=='renovated') сделан ремонт
+                                            option(value="excellent_condition", selected=form.section=='excellent_condition') отличное состояние
+                                            option(value="renovation", selected=form.section=='renovation') евроремонт
+                                            option(value="exclusive_renovation", selected=form.section=='exclusive_renovation') эксклюзивный евроремонт
+                                            option(value="primary_decoration", selected=form.section=='primary_decoration') первичная отделка
+
+                                .row
+                                    .form-group.col-md-6
+                                        label(for="new") Прямая продажа
+                                        | &nbsp;
+                                        input(type="radio", name="sale", checked=form.sale)
+                                    .form-group.col-md-6
+                                        label(for="new") Альтернатива
+                                        | &nbsp;
+                                        input(type="radio", name="sale", checked=form.sale)
+                                .row
+                                    .form-group.col-md-6
+                                        label(for="brand-section-select")  Основание права собственности:
+                                        select#brand-section-select(data-placeholder="Please choose a section", autocomplete="off", name="ops")
+                                            option(value="")
+                                            option(value="purchase_sale", selected=form.section=='purchase_sale') купля/продажа
+                                            option(value="hcc", selected=form.section=='hcc') ЖСК
+                                            option(value="privatization", selected=form.section=='privatization') приватизация
+                                            option(value="donation", selected=form.section=='donation') дарение
+                                            option(value="inheritance", selected=form.section=='inheritance') наследство
+                                            option(value="names", selected=form.section=='names') мена
+                                            option(value="investing", selected=form.section=='investing') инвестирование
+                                            option(value="release", selected=form.section=='release') рента
+                                            option(value="court_decision", selected=form.section=='court_decision') решение суда
+                                            option(value="pledge_mortgage", selected=form.section=='pledge_mortgage') залог (ипотека)
+                                            option(value="other", selected=form.section=='other') иное
+                                    .form-group.col-md-6
+                                        label Год вступление в права собственности (дата последней сделки)
+                                        input#date.form-control(type="text", name="lasttransaction", value="#{form.lasttransaction || ''}", tabindex="4", autocomplete="off")
+                                hr
+                                .row
+                                    .form-group.col-md-12
+                                        label Примечания:
+                                        textarea.form-control(name="notes[#{locale.locale}]") #{form.notes ? form.notes[locale.locale] : ''}
+                                    .form-group.col-md-6
+                                        label Контактный телефон:
+                                        input.form-control(type="text", name="phone[#{locale.locale}]", value="#{form.phone ? form.phone[locale.locale] : ''}", autocomplete="off")
+                    .row
+                        .form-group.col-md-6
+                            label(for="logo") Logo
+                            input#logo(type="file", name="logo", tabindex="5")
+            .panel-footer
+                button.btn.btn-primary.pull-right(type="submit", tabindex="6") Save
+                .clearfix

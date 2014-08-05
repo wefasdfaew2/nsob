@@ -20,17 +20,17 @@ block content
                     div.tab-content
                         each locale, i in locales()
                             div.tab-pane(class=i==0?"active":"", id="lang_#{locale.locale}")
-                                .row
-                                    .form-group.col-md-6
-                                        label Name
-                                        input.form-control(type="text", name="name[#{locale.locale}]", value="#{form.name ? form.name[locale.locale] : ''}", autocomplete="off")
-                                    .form-group.col-md-6
-                                        label Title line
-                                        input.form-control(type="text", name="titleLine[#{locale.locale}]", value="#{form.titleLine ? form.titleLine[locale.locale] : ''}", autocomplete="off")
-                                .row
-                                    .form-group.col-md-12
-                                        label Text
-                                        textarea.form-control(name="text[#{locale.locale}]") #{form.text ? form.text[locale.locale] : ''}
+                    .row
+                        .form-group.col-md-6
+                            label Name
+                            input.form-control(type="text", name="name", value="#{brand.name}")
+                        .form-group.col-md-6
+                            label Title line
+                            input.form-control(type="text", name="titleLine", value="#{brand.titleLine}", autocomplete="off")
+                    .row
+                        .form-group.col-md-12
+                            label Text
+                            textarea.form-control(name="text") #{brand.text}
                     .row
                         .form-group.col-md-6
                             label(for="brand-section-select") Section

@@ -1,0 +1,34 @@
+extends layout
+
+block content
+
+    .panel.panel-default
+        .panel-heading
+            a.btn.btn-primary(href="/account/ads/create") Create Ad
+        .panel-body
+            table.table.table-hover
+                thead
+                    tr
+                        th Name
+                        th Title line
+                        th Room
+                        th Floor
+                        th Category
+                        th Logo
+                        th Delete
+                tbody
+                    if ads
+                        each ad in ads
+                            tr
+                                td: a(href="/account/ad/#{ad.id}") #{_o(ad.name)}
+                                td #{_o(ad.titleLine)}
+                                td #{ad.room}
+                                td #{ad.floor}
+                                td #{ad.category}
+                                td
+                                    if(ad.logo)
+                                        img(src="/uploads/#{ad.logo}", width="100")
+                                td
+                                    a.edit(href="/account/ad/#{ad.id}") Edit
+                                    br
+                                    a.delete(href="/account/ad/delete?id=#{ad.id}") Delete

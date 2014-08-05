@@ -1,0 +1,12 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        title Administrative Panel #{title ? '- ' + title : ''}
+        != css("admin.css")
+        != js("admin.js")
+        script(src="//tinymce.cachefly.net/4.0/tinymce.min.js")
+    body
+        include header
+        #page-content.container(style="margin-top:70px")
+            block content

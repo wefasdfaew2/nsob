@@ -1,0 +1,70 @@
+.row
+    .form-group.col-md-6
+        label - комнатная квартира
+        input.form-control(type="text", name="card_rooms[#{locale.locale}]", value="#{form.card_rooms ? form.card_rooms[locale.locale] : ''}", autocomplete="off")
+    .form-group.col-md-6
+        label Адрес:
+        input.form-control(type="text", name="card_address[#{locale.locale}]", value="#{form.card_address ? form.card_address[locale.locale] : ''}", autocomplete="off")
+.row
+    .form-group.col-md-6
+        label дом
+        input.form-control(type="text", name="dom[#{locale.locale}]", value="#{form.dom ? form.dom[locale.locale] : ''}", autocomplete="off")
+    .form-group.col-md-6
+        label к
+        input.form-control(type="text", name="korpus[#{locale.locale}]", value="#{form.korpus ? form.korpus[locale.locale] : ''}", autocomplete="off")
+.row
+    .form-group.col-md-6
+        label с
+        input.form-control(type="text", name="stroenie[#{locale.locale}]", value="#{form.stroenie ? form.stroenie[locale.locale] : ''}", autocomplete="off")
+    .form-group.col-md-6
+        label метро
+        input.form-control(type="text", name="fdataMetroId_h[#{locale.locale}]", value="#{form.fdataMetroId_h ? form.fdataMetroId_h[locale.locale] : ''}", autocomplete="off")
+.row
+    .form-group.col-md-6
+        label минут до метро
+        input.form-control(type="text", name="farval[#{locale.locale}]", value="#{form.farval ? form.farval[locale.locale] : ''}", autocomplete="off")
+    .form-group.col-md-6
+        label(for="brand-section-select") Section
+        select#brand-section-select(data-placeholder="Please choose a section", autocomplete="off", name="afoot")
+            option(value="")
+            option(value="afoot", selected=form.section=='afoot') пешком
+            option(value="transport", selected=form.section=='transport') транспортом
+            .row
+            .form-group.col-md-6
+            label этаж
+            input.form-control(name="levels[#{locale.locale}]") #{form.levels ? form.levels[locale.locale] : ''}
+    .form-group.col-md-6
+        label  этажного дома
+        input.form-control(name="fullevel[#{locale.locale}]") #{form.fullevel ? form.fullevel[locale.locale] : ''}
+
+.row
+    .form-group.col-md-6
+        label(for="brand-section-select") Тип дома:
+        select#brand-section-select(data-placeholder="Please choose a section", autocomplete="off", name="afoot")
+            option(value="")
+            option(value="block", selected=form.section=='block') блочный
+            option(value="panel", selected=form.section=='panel') панельный
+            option(value="stone", selected=form.section=='stone') кирпичный
+            option(value="stalin", selected=form.section=='stalin') сталинский
+            option(value="monolithic", selected=form.section=='monolithic') монолитный
+            option(value="elite", selected=form.section=='elite') элитный
+            option(value="brick", selected=form.section=='brick') монолитно-кирпичный
+            option(value="block_panel", selected=form.section=='block_panel') блочно-панельный
+            .form-group.col-md-6
+            label(for="new") Новостройка
+        | &nbsp;
+        input(type="checkbox", name="newEnabled", checked=form.newEnabled)
+.row
+    .form-group.col-md-6
+        label Общая
+        input.form-control(name="general[#{locale.locale}]") #{form.general ? form.general[locale.locale] : ''}
+    .form-group.col-md-6
+        label Жилая
+        input.form-control(name="residential[#{locale.locale}]") #{form.residential ? form.residential[locale.locale] : ''}
+    .form-group.col-md-6
+        label Кухня
+        input.form-control(name="kitchen[#{locale.locale}]") #{form.kitchen ? form.kitchen[locale.locale] : ''}
+.row
+    .form-group.col-md-12
+        label level
+        textarea.form-control(name="text[#{locale.locale}]") #{form.text ? form.text[locale.locale] : ''}

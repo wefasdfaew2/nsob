@@ -713,6 +713,7 @@ module.exports = {
 
   brands: function(req, res) {
     kit.models.brand.find({}, function(err, results) {
+        console.log(results[0].name);
       res.render('admin/brands', { brands: results });
     });
   },
@@ -725,9 +726,10 @@ module.exports = {
   },
 
   brandsCreate: function(req, res) {
-    var name = locales.encode(req.body.name)
-      , titleLine = locales.encode(req.body.titleLine)
-      , text = locales.encode(req.body.text)
+      console.log(req.body);
+    var name = req.body.name
+      , titleLine = req.body.titleLine
+      , text = req.body.text
       , date = req.body.date
       , dateEnabled = req.body.dateEnabled
       , section = req.body.section
